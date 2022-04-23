@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Tau Research Active</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Template style -->
+    <link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/et-line-font/et-line-font.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/font-awesome/css/font-awesome.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'dist/weather/weather-icons.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'dist/weather/weather-icons-wind.min.css' %}">
+</head>
+
+<body class="body-bg-color">
+    <div class="wrapper">
+        <div class="form-body">
+            <form action="{% url 'activated' %}" method="post" class="col-form" novalidate>
+                {% csrf_token %}
+                <div class="col-logo"><a href="{% url 'dashboard' %}"><img alt=""
+                            src="{% static 'dist/img/logo-lg.png' %}"></a>
+                </div>
+                <header>Tau Research ORG Password</header>
+                <fieldset>
+                    <section>
+                        <div class="form-group has-feedback">
+                            <label class="control-label">New Password</label>
+                            <input class="form-control" placeholder="Password" name="password" type="password">
+                            <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Confirm Password</label>
+                            <input class="form-control" placeholder="Password" name="cpassword" type="password">
+                            <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                    </section>
+                    <input type="hidden" name="user_id" value="{{user_id.user.id}}">
+                </fieldset>
+                <footer class="text-right">
+                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <!-- <a href="register.html" class="button button-secondary">Register</a> -->
+                </footer>
+            </form>
+        </div>
+    </div>
+    <!-- wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'dist/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dist/js/ovio.js' %}"></script>
+</body>
+
+</html>

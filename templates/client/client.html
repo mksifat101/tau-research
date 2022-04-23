@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Client</h1>
+        <ol class="breadcrumb">
+            <a href="{% url 'addclient' %}" class="btn btn-success" style="margin-top: -15px;">Add Client</a>
+            <!-- <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li class="active">Organisation</li> -->
+            <!-- <li class="active"><i class="fa fa-table"></i> Data Tables</li> -->
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-box">
+                    <!-- <a href="" class="btn btn-success">Add Organisation</a> -->
+                    <div id="example_filter" class="dataTables_filter pull-right">
+                        <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
+                    </div>
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th class="sortable">ORG Name</th>
+                                <th class="sortable">Name</th>
+                                <th class="sortable">Email</th>
+                                <th class="sortable">Username</th>
+                                <th class="sortable">Status</th>
+                            </tr>
+                        </thead>
+                        {% for org in org %}
+                        <tr>
+                            <td class="text-truncate">{{org.organisation_name}}</td>
+                            <td class="text-truncate">{{org.user.first_name}} {{org.user.last_name}}</td>
+                            <td class="text-truncate">{{org.user.email}}</td>
+                            <td class="text-truncate">{{org.user.username}}</td>
+                            <td class="text-truncate">{{org.sector}}</td>
+                            <!-- <td class="text-truncate">{{org.p_token}}</td> -->
+                            {% if org.is_active == True %}
+                            <td class="text-truncate"><span class="lable-tag tag-success">Active</span></td>
+                            {% else %}
+                            <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
+                            {% endif %}
+                            <!-- <td class="text-truncate">$ 653.00</td> -->
+                            <td class="text-truncate"><a href="{% url 'org_delete' org.user.id %}">Del</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <!-- <ul class="pagination m-bot-0">
+                        <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- content -->
+</div>
+
+{% endblock %}
