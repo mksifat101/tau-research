@@ -1,0 +1,14 @@
+{% autoescape off %}
+
+Hi {{org.user.first_name}},
+
+Your Tau Account has been Successfully Activated.
+
+You Can now Login to your Account at http://127.0.0.1:8000/ using your Account Details
+
+Account Details
+Email: {{org.user.email}}
+Password: Your Chosen Password at Activation
+
+
+{% endautoescape %}

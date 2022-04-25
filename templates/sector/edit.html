@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Add Sector</h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li class="active"><i class="fa fa-envelope-o"></i> Organisation</li>
+            <li class="active"><i class="fa fa-envelope"></i> Add Organisation</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-box">
+                    <h4>Update Sector</h4>
+                    <form action="{% url 'sectorupdate' sector1.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="organisation_name">Sector Name</label>
+                            <input type="text" class="form-control" name="name" value="{{sector1.name}}"
+                                id="sector_name" required placeholder="Sector Name">
+                        </div>
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- content -->
+</div>
+<!-- content-wrapper -->
+
+{% endblock %}

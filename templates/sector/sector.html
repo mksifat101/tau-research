@@ -37,7 +37,8 @@
                         <tr>
                             <td class="text-truncate">{{sector.id}}</td>
                             <td class="text-truncate">{{sector.name}}</td>
-                            <td class="text-truncate"><a href="{% url 'sectordel' sector.id  %}">Del</a></td>
+                            <td class="text-truncate"><a href="{% url 'sectordel' sector.id  %}">Delete</a></td>
+                            <td class="text-truncate"><a href="{% url 'sectoredit' sector.id  %}">Edit</a></td>
                             <!--<td class="text-truncate"><span class="lable-tag tag-success">Paid</span></td>
                             <td class="text-truncate">$ 653.00</td> -->
                         </tr>

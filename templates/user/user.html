@@ -5,9 +5,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Client</h1>
+        <h1>Organisation</h1>
         <ol class="breadcrumb">
-            <a href="{% url 'addclient' %}" class="btn btn-success" style="margin-top: -15px;">Add Client</a>
+            <a href="{% url 'addorg' %}" class="btn btn-success" style="margin-top: -15px;">Add Organisation</a>
             <!-- <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i> Dashboard</a></li>
             <li class="active">Organisation</li> -->
             <!-- <li class="active"><i class="fa fa-table"></i> Data Tables</li> -->
@@ -26,36 +26,40 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
-                                <th class="sortable">ORG Name</th>
                                 <th class="sortable">Name</th>
                                 <th class="sortable">Email</th>
                                 <th class="sortable">Username</th>
-                                <th class="sortable">Site location</th>
-                                <th class="sortable">Size of farms</th>
-                                <th class="sortable">Crop types</th>
-                                <th class="sortable">Irrigation system</th>
-                                <th class="sortable">Status</th>
+                                <th class="sortable">Active</th>
+                                <th class="sortable">Staff</th>
+                                <th class="sortable">Super User</th>
+                                <th class="sortable">Action</th>
                             </tr>
                         </thead>
-                        {% for client in client %}
+                        {% for user in user %}
                         <tr>
-                            <td class="text-truncate">{{client.org.org_name}}</td>
-                            <td class="text-truncate">{{client.user.first_name}} {{client.user.last_name}}</td>
-                            <td class="text-truncate">{{client.user.email}}</td>
-                            <td class="text-truncate">{{client.user.username}}</td>
-                            <td class="text-truncate">{{client.location}}</td>
-                            <td class="text-truncate">{{client.size}}</td>
-                            <td class="text-truncate">{{client.crop_types}}</td>
-                            <td class="text-truncate">{{client.irrigation}}</td>
+                            <td class="text-truncate">{{user.first_name}} {{user.last_name}}</td>
+                            <td class="text-truncate">{{user.email}}</td>
+                            <td class="text-truncate">{{user.username}}</td>
                             <!-- <td class="text-truncate">{{org.p_token}}</td> -->
-                            {% if client.user.is_active == True %}
+                            {% if user.is_active == True %}
+                            <td class="text-truncate"><span class="lable-tag tag-success">Active</span></td>
+                            {% else %}
+                            <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
+                            {% endif %}
+                            {% if user.is_staff == True %}
+                            <td class="text-truncate"><span class="lable-tag tag-success">Active</span></td>
+                            {% else %}
+                            <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
+                            {% endif %}
+                            {% if user.is_superuser == True %}
                             <td class="text-truncate"><span class="lable-tag tag-success">Active</span></td>
                             {% else %}
                             <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
                             {% endif %}
                             <!-- <td class="text-truncate">$ 653.00</td> -->
-                            <td class="text-truncate"><a href="{% url 'client_edit' client.pk %}">Edit</td>
-                            <td class="text-truncate"><a href="{% url 'client_delete' client.user.id %}">Delete</a></td>
+                            <td class="text-truncate"><a href="{% url 'user_edit' user.id %}">Edit</a></td>
+                            |
+                            <td class="text-truncate"><a href="{% url 'user_delete' user.id %}">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </table>

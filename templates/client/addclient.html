@@ -20,34 +20,57 @@
             <div class="col-md-12">
                 <div class="chart-box">
                     <h4>Add Client</h4>
-                    <form action="{% url 'addorg' %}" method="post">
+                    <form action="{% url 'addclient' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="organisation_name">Organisation Name</label>
-                            <input type="text" class="form-control" name="organisation_name" id="organisation_name"
-                                placeholder="Organisation Name">
+                            <label for="org">Organisation Name</label>
+                            <select class="form-control" name="org">
+                                {% for org1 in org1 %}
+                                <option value="{{org1.pk}}">{{ org1.org_name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="firstname">Client Firstname</label>
                             <input type="text" name="first_name" class="form-control" id="first_name"
-                                placeholder="Client Firstname">
+                                placeholder="Client Firstname" required>
                         </div>
                         <div class="form-group">
                             <label for="lastname">Client Lastname</label>
                             <input type="text" class="form-control" name="last_name" id="last_name"
-                                placeholder="Client Lastname">
+                                placeholder="Client Lastname" required>
                         </div>
                         <div class="form-group">
                             <label for="firstname">Client Username</label>
                             <input type="text" name="username" class="form-control" id="username"
-                                placeholder="Client Username">
+                                placeholder="Client Username" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Client Email address</label>
                             <input type="email" class="form-control" name="email" id="email"
-                                placeholder="Client Email address">
+                                placeholder="Client Email address" required>
                         </div>
                         <input type="hidden" name="password" value="12345678">
+                        <div class="form-group">
+                            <label for="location">Site location</label>
+                            <input type="text" class="form-control" name="location" id="location"
+                                placeholder="Site location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size Of Farms</label>
+                            <input type="text" class="form-control" name="size" id="size" placeholder="Size Of Farms"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="crop_types">Crop Types</label>
+                            <input type="text" class="form-control" name="crop_types" id="crop_types"
+                                placeholder="Crop Types" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="irrigation">Types of Irrigation System</label>
+                            <input type="text" class="form-control" name="irrigation" id="irrigation"
+                                placeholder="Types of Irrigation System" required>
+                        </div>
                         <button type="submit" class="btn btn-default">Create</button>
                     </form>
                 </div>

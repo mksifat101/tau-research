@@ -15,6 +15,8 @@ def login(request):
                 return redirect('org_portal')
             elif user.is_client:
                 return redirect('client_portal')
+            elif user.is_superuser:
+                return redirect('dashboard')
             else:
                 return redirect('dashboard')
             url = request.META.get('HTTP_REFERER')

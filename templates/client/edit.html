@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Organisation</h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li class="active"><i class="fa fa-envelope-o"></i> Client</li>
+            <li class="active"><i class="fa fa-envelope"></i> Update Client</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-box">
+                    <h4>Update Client</h4>
+                    <form action="{% url 'client_update' client1.user.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="org">Organisation Name</label>
+                            <input type="text" value="{{client1.org.org_name}}" class="form-control" disabled>
+                            <input type="hidden" name="org" value="{{client1.org.pk}}" class="form-control" id="org">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Client Firstname</label>
+                            <input type="text" name="first_name" value="{{client1.user.first_name}}"
+                                class="form-control" id="first_name" placeholder="Client Firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Client Lastname</label>
+                            <input type="text" class="form-control" value="{{client1.user.last_name}}" name="last_name"
+                                id="last_name" placeholder="Client Lastname">
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="firstname">Client Username</label> -->
+                            <input type="hidden" name="username" class="form-control" value="{{client1.user.username}}"
+                                id="username" placeholder="Client Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Client Email address</label>
+                            <input type="email" class="form-control" name="email" value="{{client1.user.email}}"
+                                id="email" placeholder="Client Email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Site location</label>
+                            <input type="text" class="form-control" name="location" value="{{client1.location}}"
+                                id="location" placeholder="Site location">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size Of Farms</label>
+                            <input type="text" class="form-control" name="size" value="{{client1.size}}" id="size"
+                                placeholder="Size Of Farms">
+                        </div>
+                        <div class="form-group">
+                            <label for="crop_types">Crop Types</label>
+                            <input type="text" class="form-control" name="crop_types" value="{{client1.crop_types}}"
+                                id="crop_types" placeholder="Crop Types">
+                        </div>
+                        <input type="hidden" class="form-control" name="password" value="{{client1.user.password}}"
+                            id="crop_types" placeholder="Crop Types">
+                        <div class="form-group">
+                            <label for="irrigation">Types of Irrigation System</label>
+                            <input type="text" class="form-control" name="irrigation" value="{{client1.irrigation}}"
+                                id="irrigation" placeholder="Types of Irrigation System">
+                        </div>
+                        <input type="hidden" class="form-control" name="p_token" value="{{client1.p_token}}"
+                            id="location" placeholder="Site location">
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- content -->
+</div>
+<!-- content-wrapper -->
+
+{% endblock %}

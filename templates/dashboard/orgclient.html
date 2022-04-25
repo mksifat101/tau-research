@@ -54,8 +54,6 @@
                             <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
                             {% endif %}
                             <!-- <td class="text-truncate">$ 653.00</td> -->
-                            <td class="text-truncate"><a href="{% url 'client_edit' client.pk %}">Edit</td>
-                            <td class="text-truncate"><a href="{% url 'client_delete' client.user.id %}">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </table>

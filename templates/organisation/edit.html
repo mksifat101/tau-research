@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Organisation</h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li class="active"><i class="fa fa-envelope-o"></i> Organisation</li>
+            <li class="active"><i class="fa fa-envelope"></i> Update Organisation</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chart-box">
+                    <h4>Update Organisation</h4>
+                    <form action="{% url 'org_update' org1.pk %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="org_name">Organisation Name</label>
+                            <input type="text" class="form-control" name="org_name" value="{{org1.org_name}}"
+                                id="org_name" placeholder="Organisation Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Representative Firstname</label>
+                            <input type="text" name="first_name" class="form-control" value="{{org1.user.first_name}}"
+                                id="first_name" placeholder="Representative Firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Representative Lastname</label>
+                            <input type="text" class="form-control" name="last_name" value="{{org1.user.last_name}}"
+                                id="last_name" placeholder="Representative Lastname">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Representative Username</label>
+                            <input type="text" name="username" class="form-control" value="{{org1.user.username}}"
+                                id="username" placeholder="Representative Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Representative Email address</label>
+                            <input type="email" class="form-control" name="email" id="email" value="{{org1.user.email}}"
+                                placeholder="Representative Email address">
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="email">Representative Password</label>
+                            <input type="password" name="password" class="form-control"
+                                placeholder="Representative Email address">
+                        </div> -->
+                        <div class="form-group">
+                            <label for="org">Sector</label>
+                            <input type="text" value="{{org1.sector.name}}" class="form-control" disabled>
+                            <input type="hidden" name="sector" value="{{org1.sector.pk}}" class="form-control"
+                                id="sector">
+                        </div>
+                        <input type="hidden" name="password" value="{{org1.user.password}}" class="form-control">
+                        <input type="hidden" class="form-control" name="p_token" value="{{org1.p_token}}">
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- content -->
+</div>
+<!-- content-wrapper -->
+
+{% endblock %}

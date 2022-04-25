@@ -1,0 +1,15 @@
+{% autoescape off %}
+
+Hi {{org.user.first_name}},
+
+Your Tau Account has been Successfully Created
+
+
+Account Details
+Name: {{org.user.first_name}} {{org.user.last_name}}
+Email: {{org.user.email}}
+
+Please click here: http://127.0.0.1:8000/organisation/activate/{{token}}/ to Activate your Tau Account now.
+Alternatively, Copy and Paste the Link below into your Browser: http://127.0.0.1:8000/organisation/activate/{{token}}/
+
+{% endautoescape %}

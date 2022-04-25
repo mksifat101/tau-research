@@ -49,7 +49,8 @@
                             <td class="text-truncate"><span class="lable-tag tag-unpaid">No Active</span></td>
                             {% endif %}
                             <!-- <td class="text-truncate">$ 653.00</td> -->
-                            <td class="text-truncate"><a href="{% url 'org_delete' org.user.id %}">Del</a></td>
+                            <td class="text-truncate"><a href="{% url 'org_edit' org.pk %}">Edit</a></td>
+                            <td class="text-truncate"><a href="{% url 'org_delete' org.user.id %}">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </table>
